@@ -396,7 +396,7 @@ DatePicker.prototype.normalize = function( value/*, options*/ ) {
 DatePicker.prototype.measure = function( type, value/*, options*/ ) {
 
     var calendar = this
-    
+
     // If it's an integer, get a date relative to today.
     if ( _.isInteger( value ) ) {
         value = calendar.now( type, value, { rel: value } )
@@ -945,7 +945,7 @@ DatePicker.prototype.activate = function( type, datesToEnable ) {
                 }
             }
 
-            // In the event that we’re dealing with an exact range of dates,
+            // In the events that we’re dealing with an exact range of dates,
             // make sure there are no “inverted” dates because of it.
             if ( isExactRange ) for ( index = 0; index < disabledItemsCount; index += 1 ) {
                 if ( calendar.isDateOverlap( disabledItems[index], unitToEnable ) ) {

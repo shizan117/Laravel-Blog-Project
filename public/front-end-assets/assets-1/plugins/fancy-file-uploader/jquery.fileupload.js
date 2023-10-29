@@ -102,7 +102,7 @@
       // Set to null to disable the change listener.
       fileInput: undefined,
       // By default, the file input field is replaced with a clone after
-      // each input field change event. This is required for iframe transport
+      // each input field change events. This is required for iframe transport
       // queues and allows change events to be fired for the same file
       // selection, but can be disabled by setting the following option to false:
       replaceFileInput: true,
@@ -239,7 +239,7 @@
 
       // Other callbacks:
 
-      // Callback for the submit event of each file upload:
+      // Callback for the submit events of each file upload:
       // submit: function (e, data) {}, // .on('fileuploadsubmit', func);
 
       // Callback for the start of each file upload request:
@@ -260,10 +260,10 @@
       // Callback for global upload progress events:
       // progressall: function (e, data) {}, // .on('fileuploadprogressall', func);
 
-      // Callback for uploads start, equivalent to the global ajaxStart event:
+      // Callback for uploads start, equivalent to the global ajaxStart events:
       // start: function (e) {}, // .on('fileuploadstart', func);
 
-      // Callback for uploads stop, equivalent to the global ajaxStop event:
+      // Callback for uploads stop, equivalent to the global ajaxStop events:
       // stop: function (e) {}, // .on('fileuploadstop', func);
 
       // Callback for change events of the fileInput(s):
@@ -301,7 +301,7 @@
       timeout: 0
     },
 
-    // A list of options that require reinitializing event listeners and/or
+    // A list of options that require reinitializing events listeners and/or
     // special initialization code:
     _specialOptions: [
       'fileInput',
@@ -424,7 +424,7 @@
           loaded,
           data.bitrateInterval
         );
-        // Trigger a custom progress event with a total data property set
+        // Trigger a custom progress events with a total data property set
         // to the file size(s) of the current upload and a loaded data
         // property calculated accordingly:
         this._trigger(
@@ -432,7 +432,7 @@
           $.Event('progress', { delegatedEvent: e }),
           data
         );
-        // Trigger a global progress event for all current file uploads,
+        // Trigger a global progress events for all current file uploads,
         // including ajax calls queued for sequential file uploads:
         this._trigger(
           'progressall',
@@ -445,12 +445,12 @@
     _initProgressListener: function (options) {
       var that = this,
         xhr = options.xhr ? options.xhr() : $.ajaxSettings.xhr();
-      // Accesss to the native XHR object is required to add event listeners
-      // for the upload progress event:
+      // Accesss to the native XHR object is required to add events listeners
+      // for the upload progress events:
       if (xhr.upload) {
         $(xhr.upload).on('progress', function (e) {
           var oe = e.originalEvent;
-          // Make sure the progress event properties get copied over:
+          // Make sure the progress events properties get copied over:
           e.lengthComputable = oe.lengthComputable;
           e.loaded = oe.loaded;
           e.total = oe.total;
@@ -863,7 +863,7 @@
         )
           .done(function (result, textStatus, jqXHR) {
             ub = that._getUploadedBytes(jqXHR) || ub + o.chunkSize;
-            // Create a progress event if no final progress event
+            // Create a progress events if no final progress events
             // with loaded equaling total has been triggered
             // for this chunk:
             if (currentLoaded + o.chunkSize - o._progress.loaded) {
@@ -914,7 +914,7 @@
       if (this._active === 0) {
         // the start callback is triggered when an upload starts
         // and no other uploads are currently running,
-        // equivalent to the global ajaxStart event:
+        // equivalent to the global ajaxStart events:
         this._trigger('start');
         // Set timer for global bitrate progress calculation:
         this._bitrateTimer = new this._BitrateTimer();
@@ -940,7 +940,7 @@
       var total = options._progress.total,
         response = options._response;
       if (options._progress.loaded < total) {
-        // Create a progress event if no final progress event
+        // Create a progress events if no final progress events
         // with loaded equaling total has been triggered:
         this._onProgress(
           $.Event('progress', {
@@ -1037,7 +1037,7 @@
                 }
                 if (that._active === 0) {
                   // The stop callback is triggered when all uploads have
-                  // been completed, equivalent to the global ajaxStop event:
+                  // been completed, equivalent to the global ajaxStop events:
                   that._trigger('stop');
                 }
               });
@@ -1174,7 +1174,7 @@
       $.cleanData(input.off('remove'));
       // Replace the original file input element in the fileInput
       // elements set with the clone, which has been copied including
-      // event handlers:
+      // events handlers:
       this.options.fileInput = this.options.fileInput.map(function (i, el) {
         if (el === input[0]) {
           return inputClone[0];
@@ -1408,7 +1408,7 @@
         this._on(this.options.dropZone, {
           dragover: this._onDragOver,
           drop: this._onDrop,
-          // event.preventDefault() on dragenter is required for IE10+:
+          // events.preventDefault() on dragenter is required for IE10+:
           dragenter: this._onDragEnter,
           // dragleave is not required, but added for completeness:
           dragleave: this._onDragLeave

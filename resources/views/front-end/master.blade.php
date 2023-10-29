@@ -29,11 +29,11 @@
 </head>
 <body>
 
-@include('front-end.navBar.header')
+@include('front-end.include.header')
 
 @yield('content')
 
-@include('front-end.navBar.footer')
+@include('front-end.include.footer')
 
 
 <script src="{{asset('front-end-assets')}}/assets-2/js/jquery.min.js"></script>

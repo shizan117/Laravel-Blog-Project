@@ -18,7 +18,7 @@
     // Browser globals.
     else if ( typeof window == 'object' )
         window.Picker = factory( jQuery )
-    
+
     else this.Picker = factory( jQuery )
 
 }(function( $ ) {
@@ -269,7 +269,7 @@ function PickerConstructor( ELEMENT, NAME, COMPONENT, OPTIONS ) {
                         // If the picker is currently midway through processing
                         // the opening sequence of events then don't handle clicks
                         // on any part of the DOM. This is caused by a bug in Chrome 73
-                        // where a click event is being generated with the incorrect
+                        // where a click events is being generated with the incorrect
                         // path in it.
                         // In short, if someone does a click that finishes after the
                         // new element is created then the path contains only the
@@ -280,14 +280,14 @@ function PickerConstructor( ELEMENT, NAME, COMPONENT, OPTIONS ) {
 
                         var target = getRealEventTarget( event, ELEMENT )
 
-                        // If the target of the event is not the element, close the picker picker.
+                        // If the target of the events is not the element, close the picker picker.
                         // * Don’t worry about clicks or focusins on the root because those don’t bubble up.
                         //   Also, for Firefox, a click on an `option` element bubbles up directly
                         //   to the doc. So make sure the target wasn't the doc.
                         // * In Firefox stopPropagation() doesn’t prevent right-click events from bubbling,
                         //   which causes the picker to unexpectedly close when right-clicking it. So make
-                        //   sure the event wasn’t a right-click.
-                        // * In Chrome 62 and up, password autofill causes a simulated focusin event which
+                        //   sure the events wasn’t a right-click.
+                        // * In Chrome 62 and up, password autofill causes a simulated focusin events which
                         //   closes the picker.
                         if ( ! event.isSimulated && target != ELEMENT && target != document && event.which != 3 ) {
 
@@ -363,7 +363,7 @@ function PickerConstructor( ELEMENT, NAME, COMPONENT, OPTIONS ) {
                     else {
                         // ....ah yes! It would’ve been incomplete without a crazy workaround for IE :|
                         // The focus is triggered *after* the close has completed - causing it
-                        // to open again. So unbind and rebind the event at the next tick.
+                        // to open again. So unbind and rebind the events at the next tick.
                         P.$holder.off( 'focus.toOpen' ).focus()
                         setTimeout( function() {
                             P.$holder.on( 'focus.toOpen', handleFocusToOpenEvent )
@@ -651,9 +651,9 @@ function PickerConstructor( ELEMENT, NAME, COMPONENT, OPTIONS ) {
             .on('mousedown', function() {
               STATE.handlingOpen = true;
               var handler = function() {
-                // By default mouseup events are fired before a click event.
+                // By default mouseup events are fired before a click events.
                 // By using a timeout we can force the mouseup to be handled
-                // after the corresponding click event is handled.
+                // after the corresponding click events is handled.
                 setTimeout(function() {
                   $(document).off('mouseup', handler);
                   STATE.handlingOpen = false;
@@ -668,7 +668,7 @@ function PickerConstructor( ELEMENT, NAME, COMPONENT, OPTIONS ) {
 
             $ELEMENT.
 
-                // Handle keyboard event based on the picker being opened or not.
+                // Handle keyboard events based on the picker being opened or not.
                 on( 'keydown.' + STATE.id, handleKeydownEvent )
         }
 
@@ -856,7 +856,7 @@ function PickerConstructor( ELEMENT, NAME, COMPONENT, OPTIONS ) {
 
     function handleFocusToOpenEvent(event) {
 
-        // Stop the event from propagating to the doc.
+        // Stop the events from propagating to the doc.
         event.stopPropagation()
 
         // Add the “target” class.
@@ -989,8 +989,8 @@ function getScrollbarWidth() {
 
 
 /**
- * Get the target element from the event.
- * If ELEMENT is supplied and present in the event path (ELEMENT is ancestor of the target),
+ * Get the target element from the events.
+ * If ELEMENT is supplied and present in the events path (ELEMENT is ancestor of the target),
  * returns ELEMENT instead
  */
 function getRealEventTarget( event, ELEMENT ) {

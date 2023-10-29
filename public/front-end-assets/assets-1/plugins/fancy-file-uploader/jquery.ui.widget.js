@@ -401,7 +401,7 @@
       });
 
       // We can probably remove the unbind calls in 2.0
-      // all event bindings should go through this._on()
+      // all events bindings should go through this._on()
       this.element.off(this.eventNamespace).removeData(this.widgetFullName);
       this.widget().off(this.eventNamespace).removeAttr('aria-disabled');
 
@@ -742,11 +742,11 @@
         : this.widgetEventPrefix + type
       ).toLowerCase();
 
-      // The original event may come from any element
-      // so we need to reset the target on the new event
+      // The original events may come from any element
+      // so we need to reset the target on the new events
       event.target = this.element[0];
 
-      // Copy original event properties over to the new event
+      // Copy original events properties over to the new events
       orig = event.originalEvent;
       if (orig) {
         for (prop in orig) {

@@ -11,12 +11,12 @@
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item"><a href="{{route('home')}}" class="nav-link">Home</a></li>
                 <li class="nav-item"><a href="{{route('about')}}" class="nav-link">About</a></li>
-                <li class="nav-item"><a href="{{route('upComing')}}" class="nav-link">Causes</a></li>
-                <li class="nav-item"><a href="{{route('upComing')}}" class="nav-link">Donate</a></li>
-                <li class="nav-item"><a href="{{route('upComing')}}" class="nav-link">Blog</a></li>
-                <li class="nav-item"><a href="{{route('upComing')}}" class="nav-link">Gallery</a></li>
-                <li class="nav-item"><a href="{{route('upComing')}}" class="nav-link">Events</a></li>
-                <li class="nav-item"><a href="{{route('upComing')}}" class="nav-link">Contact</a></li>
+                <li class="nav-item"><a href="{{route('causes')}}" class="nav-link">Causes</a></li>
+{{--                <li class="nav-item"><a href="{{route('donate')}}" class="nav-link">Donate</a></li>--}}
+                <li class="nav-item"><a href="{{route('blog')}}" class="nav-link">Blog</a></li>
+                <li class="nav-item"><a href="{{route('gallery')}}" class="nav-link">Gallery</a></li>
+                <li class="nav-item"><a href="{{route('events')}}" class="nav-link">Events</a></li>
+                <li class="nav-item"><a href="{{route('contact')}}" class="nav-link">Contact</a></li>
             </ul>
         </div>
     </div>
