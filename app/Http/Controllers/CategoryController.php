@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
@@ -9,9 +10,12 @@ class CategoryController extends Controller
     /**
      * Display a listing of the resource.
      */
+    public static $destroy;
     public function index()
     {
-        //
+        return view('admin.category.index',[
+            'categories'=>Category::all()
+        ]);
     }
 
     /**
@@ -19,7 +23,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.category.create');
     }
 
     /**
@@ -27,7 +31,9 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Category::saveInfo($request);
+       return redirect(route('categories.index'));
+
     }
 
     /**
@@ -35,7 +41,8 @@ class CategoryController extends Controller
      */
     public function show(string $id)
     {
-        //
+        Category::showStatus($id);
+        return back();
     }
 
     /**
@@ -59,6 +66,8 @@ class CategoryController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        self::$destroy= Category::find($id);
+        self::$destroy->delete();
+        return back();
     }
 }

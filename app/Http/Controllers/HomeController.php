@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Blog;
 use Illuminate\Http\Request;
+use function Livewire\get;
 
 class HomeController extends Controller
 {
@@ -23,7 +25,9 @@ class HomeController extends Controller
         return view('front-end.gallery.gallery');
     }
     public function blog(){
-        return view('front-end.blog.blog');
+        return view('front-end.blog.blog',[
+          'blogs' => Blog::where('status',1)->orderBy('id','desc')->get()
+            ]);
     }
     public function donate(){
         return view('front-end.donate.donate');

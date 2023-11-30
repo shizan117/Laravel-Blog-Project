@@ -1,16 +1,16 @@
 @extends('admin.master')
+
 @section('title')
-    Manage Catagory
+    Manage Category
 @endsection
 
 @section('content')
     <!-- Page Heading -->
-    <h3 class="h3 mb-2 text-gray-800">Tables</h3>
 
     <!-- DataTales Example -->
     <div class="card col-sm-8 offset-sm-2 shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
+            <h6 class="m-0 font-weight-bold text-primary">Manage Category</h6>
         </div>
         <div class="card-body">
             <div class="table-responsive">
@@ -18,29 +18,33 @@
                     <thead>
                    <tr >
                        <th>Sr No.</th>
-                       <th>Catagory Name</th>
+                       <th>Category Name</th>
                        <th>Status</th>
+                       <th>Created Date</th>
+                       <th>Updated Date</th>
                        <th>Action</th>
                    </tr>
                    </thead>
                    <tbody>
-                   @foreach($catagories as $catagory)
+                   @foreach($categories as $Category)
                        <tr>
                            <td>{{$loop->iteration}}</td>
-                           <td>{{$catagory->catagory_name}}</td>
-                           <td>{{$catagory->status}}</td>
+                           <td>{{$Category->category_name}}</td>
+                           <td>{{$Category->status}}</td>
+                           <td>{{$Category->created_at}}</td>
+                           <td>{{$Category->updated_at}}</td>
                            <td>
-                               <a href="{{route('catagories.edit',$catagory->id)}}" class="btn btn-success float-start m-1">Edit</a>
-                               @if($catagory->status==1)
-                                   <a href="{{route('catagories.show',$catagory->id)}}" class="btn float-start m-1 btn-success">Active</a>
+                               <a href="{{route('categories.edit',$Category->id)}}" class="btn btn-success float-start m-1">Edit</a>
+                               @if($Category->status==1)
+                                   <a href="{{route('categories.show',$Category->id)}}" class="btn float-start m-1 btn-success">Active</a>
                                @else
-                                   <a href="{{route('catagories.show',$catagory->id)}}" class="btn float-start m-1 btn-dark">Inactive</a>
+                                   <a href="{{route('categories.show',$Category->id)}}" class="btn float-start m-1 btn-dark">Inactive</a>
                               @endif
-                               <form action="{{route('catagories.destroy',$catagory->id)}}" method="post">
+                               <form action="{{route('categories.destroy',$Category->id)}}" method="post">
                                    @csrf
                                    @method('DELETE')
-                                   <input type="hidden" name="id" value="{{$catagory->id}}">
-                                   <button type="submit" class="btn btn-danger float-start m-1">DELETE</button>
+                                   <input type="hidden" name="id" value="{{$Category->id}}">
+                                   <button type="submit" class="btn btn-danger float-start m-1" onclick="return confirm('Are you sure to delete this item?')">DELETE</button>
                                </form>
                            </td>
                        </tr>

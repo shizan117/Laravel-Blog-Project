@@ -5,12 +5,11 @@
 
 @section('content')
     <!-- Page Heading -->
-    <h3 class="h3 mb-2 text-gray-800">Tables</h3>
 
     <!-- DataTales Example -->
     <div class="card  shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
+            <h6 class="m-0 font-weight-bold text-primary">Manage Blogs</h6>
         </div>
         <div class="card-body">
             <div class="table-responsive">
@@ -19,7 +18,7 @@
                     <tr >
                         <th>Sr No.</th>
                         <th>Blog Title</th>
-                        <th>Blog Catagory Name</th>
+                        <th>Blog Category Name</th>
                         <th>Author Name</th>
                         <th>Description </th>
                         <th>Date </th>
@@ -33,7 +32,7 @@
                         <tr>
                             <td>{{$loop->iteration}}</td>
                             <td>{{$blog->title}}</td>
-                            <td>{{$blog->catagory->catagory_name}}</td>
+                            <td>{{$blog->category_id}}</td>
                             <td>{{$blog->author_name}}</td>
                             <td>{{$blog->description}}</td>
                             <td>{{$blog->date}}</td>
@@ -50,7 +49,7 @@
                                     @csrf
                                     @method('DELETE')
                                     <input type="hidden" name="id" value="{{$blog->id}}">
-                                    <button type="submit" class="btn btn-danger float-start m-1">DELETE</button>
+                                    <button type="submit" class="btn btn-danger float-start m-1"onclick="return confirm('Are you sure to delete this item?')">DELETE</button>
                                 </form>
                             </td>
                         </tr>

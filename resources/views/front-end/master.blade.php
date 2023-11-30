@@ -27,7 +27,7 @@
     <link rel="stylesheet" href="{{asset('front-end-assets')}}/assets-2/css/icomoon.css">
     <link rel="stylesheet" href="{{asset('front-end-assets')}}/assets-2/css/style.css">
 </head>
-<body>
+<body id="page-top">
 
 @include('front-end.include.header')
 

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Blog;
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class BlogController extends Controller
@@ -9,9 +11,13 @@ class BlogController extends Controller
     /**
      * Display a listing of the resource.
      */
+    public static $destroy;
     public function index()
     {
-        //
+        return view('admin.blog.index',[
+            'blogs'=>Blog::all(),
+            'categories'=>Category::all()
+        ]);
     }
 
     /**
@@ -19,7 +25,9 @@ class BlogController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.blog.create',[
+            'categories'=>Category::all()
+        ]);
     }
 
     /**
@@ -27,7 +35,8 @@ class BlogController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Blog::saveInfo($request);
+        return redirect(route('blogs.index'));
     }
 
     /**
@@ -35,7 +44,9 @@ class BlogController extends Controller
      */
     public function show(string $id)
     {
-        //
+        Blog::showStatus($id);
+        return back();
+
     }
 
     /**
@@ -59,6 +70,8 @@ class BlogController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        self::$destroy= Blog::find($id);
+        self::$destroy->delete();
+        return back();
     }
 }
