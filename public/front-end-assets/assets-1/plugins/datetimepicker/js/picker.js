@@ -134,7 +134,7 @@ function PickerConstructor( ELEMENT, NAME, COMPONENT, OPTIONS ) {
                 else $ELEMENT.after( P.$root )
 
 
-                // Bind the default component and settings events.
+                // Bind the default component and settings event.
                 P.on({
                     start: P.component.onStart,
                     render: P.component.onRender,
@@ -162,7 +162,7 @@ function PickerConstructor( ELEMENT, NAME, COMPONENT, OPTIONS ) {
                 }
 
 
-                // Trigger queued the “start” and “render” events.
+                // Trigger queued the “start” and “render” event.
                 return P.trigger( 'start' ).trigger( 'render' )
             }, //start
 
@@ -180,7 +180,7 @@ function PickerConstructor( ELEMENT, NAME, COMPONENT, OPTIONS ) {
                 }
                 else P.$root.find( '.' + CLASSES.box ).html( P.component.nodes( STATE.open ) )
 
-                // Trigger the queued “render” events.
+                // Trigger the queued “render” event.
                 return P.trigger( 'render' )
             }, //render
 
@@ -205,7 +205,7 @@ function PickerConstructor( ELEMENT, NAME, COMPONENT, OPTIONS ) {
                 P.$root.remove()
 
                 // Remove the input class, remove the stored data, and unbind
-                // the events (after a tick for IE - see `P.close`).
+                // the event (after a tick for IE - see `P.close`).
                 $ELEMENT.removeClass( CLASSES.input ).removeData( NAME )
                 setTimeout( function() {
                     $ELEMENT.off( '.' + STATE.id )
@@ -215,7 +215,7 @@ function PickerConstructor( ELEMENT, NAME, COMPONENT, OPTIONS ) {
                 ELEMENT.type = STATE.type
                 ELEMENT.readOnly = false
 
-                // Trigger the queued “stop” events.
+                // Trigger the queued “stop” event.
                 P.trigger( 'stop' )
 
                 // Reset the picker states.
@@ -248,7 +248,7 @@ function PickerConstructor( ELEMENT, NAME, COMPONENT, OPTIONS ) {
 
                 }, 0 )
 
-                // If we have to give focus, bind the element and doc events.
+                // If we have to give focus, bind the element and doc event.
                 if ( dontGiveFocus !== false ) {
 
                     // Set it as open.
@@ -264,12 +264,12 @@ function PickerConstructor( ELEMENT, NAME, COMPONENT, OPTIONS ) {
                     // Pass focus to the root element’s jQuery object.
                     focusPickerOnceOpened()
 
-                    // Bind the document events.
+                    // Bind the document event.
                     $document.on( 'click.' + STATE.id + ' focusin.' + STATE.id, function( event ) {
                         // If the picker is currently midway through processing
-                        // the opening sequence of events then don't handle clicks
+                        // the opening sequence of event then don't handle clicks
                         // on any part of the DOM. This is caused by a bug in Chrome 73
-                        // where a click events is being generated with the incorrect
+                        // where a click event is being generated with the incorrect
                         // path in it.
                         // In short, if someone does a click that finishes after the
                         // new element is created then the path contains only the
@@ -280,14 +280,14 @@ function PickerConstructor( ELEMENT, NAME, COMPONENT, OPTIONS ) {
 
                         var target = getRealEventTarget( event, ELEMENT )
 
-                        // If the target of the events is not the element, close the picker picker.
+                        // If the target of the event is not the element, close the picker picker.
                         // * Don’t worry about clicks or focusins on the root because those don’t bubble up.
                         //   Also, for Firefox, a click on an `option` element bubbles up directly
                         //   to the doc. So make sure the target wasn't the doc.
-                        // * In Firefox stopPropagation() doesn’t prevent right-click events from bubbling,
+                        // * In Firefox stopPropagation() doesn’t prevent right-click event from bubbling,
                         //   which causes the picker to unexpectedly close when right-clicking it. So make
-                        //   sure the events wasn’t a right-click.
-                        // * In Chrome 62 and up, password autofill causes a simulated focusin events which
+                        //   sure the event wasn’t a right-click.
+                        // * In Chrome 62 and up, password autofill causes a simulated focusin event which
                         //   closes the picker.
                         if ( ! event.isSimulated && target != ELEMENT && target != document && event.which != 3 ) {
 
@@ -345,7 +345,7 @@ function PickerConstructor( ELEMENT, NAME, COMPONENT, OPTIONS ) {
                     })
                 }
 
-                // Trigger the queued “open” events.
+                // Trigger the queued “open” event.
                 return P.trigger( 'open' )
             }, //open
 
@@ -363,7 +363,7 @@ function PickerConstructor( ELEMENT, NAME, COMPONENT, OPTIONS ) {
                     else {
                         // ....ah yes! It would’ve been incomplete without a crazy workaround for IE :|
                         // The focus is triggered *after* the close has completed - causing it
-                        // to open again. So unbind and rebind the events at the next tick.
+                        // to open again. So unbind and rebind the event at the next tick.
                         P.$holder.off( 'focus.toOpen' ).focus()
                         setTimeout( function() {
                             P.$holder.on( 'focus.toOpen', handleFocusToOpenEvent )
@@ -398,10 +398,10 @@ function PickerConstructor( ELEMENT, NAME, COMPONENT, OPTIONS ) {
                         css( 'padding-right', '-=' + getScrollbarWidth() )
                 }
 
-                // Unbind the document events.
+                // Unbind the document event.
                 $document.off( '.' + STATE.id )
 
-                // Trigger the queued “close” events.
+                // Trigger the queued “close” event.
                 return P.trigger( 'close' )
             }, //close
 
@@ -457,7 +457,7 @@ function PickerConstructor( ELEMENT, NAME, COMPONENT, OPTIONS ) {
                     P.render()
                 }
 
-                // When the method isn’t muted, trigger queued “set” events and pass the `thingObject`.
+                // When the method isn’t muted, trigger queued “set” event and pass the `thingObject`.
                 return options.muted ? P : P.trigger( 'set', thingObject )
             }, //set
 
@@ -506,7 +506,7 @@ function PickerConstructor( ELEMENT, NAME, COMPONENT, OPTIONS ) {
 
 
             /**
-             * Bind events on the things.
+             * Bind event on the things.
              */
             on: function( thing, method, internal ) {
 
@@ -546,7 +546,7 @@ function PickerConstructor( ELEMENT, NAME, COMPONENT, OPTIONS ) {
 
 
             /**
-             * Unbind events on the things.
+             * Unbind event on the things.
              */
             off: function() {
                 var i, thingName,
@@ -562,7 +562,7 @@ function PickerConstructor( ELEMENT, NAME, COMPONENT, OPTIONS ) {
 
 
             /**
-             * Fire off method events.
+             * Fire off method event.
              */
             trigger: function( name, data ) {
                 var _trigger = function( name ) {
@@ -651,9 +651,9 @@ function PickerConstructor( ELEMENT, NAME, COMPONENT, OPTIONS ) {
             .on('mousedown', function() {
               STATE.handlingOpen = true;
               var handler = function() {
-                // By default mouseup events are fired before a click events.
+                // By default mouseup event are fired before a click event.
                 // By using a timeout we can force the mouseup to be handled
-                // after the corresponding click events is handled.
+                // after the corresponding click event is handled.
                 setTimeout(function() {
                   $(document).off('mouseup', handler);
                   STATE.handlingOpen = false;
@@ -663,12 +663,12 @@ function PickerConstructor( ELEMENT, NAME, COMPONENT, OPTIONS ) {
             });
 
 
-        // Only bind keydown events if the element isn’t editable.
+        // Only bind keydown event if the element isn’t editable.
         if ( !SETTINGS.editable ) {
 
             $ELEMENT.
 
-                // Handle keyboard events based on the picker being opened or not.
+                // Handle keyboard event based on the picker being opened or not.
                 on( 'keydown.' + STATE.id, handleKeydownEvent )
         }
 
@@ -727,7 +727,7 @@ function PickerConstructor( ELEMENT, NAME, COMPONENT, OPTIONS ) {
 
                         event.stopPropagation()
 
-                        // * For mousedown events, cancel the default action in order to
+                        // * For mousedown event, cancel the default action in order to
                         //   prevent cases where focus is shifted onto external elements
                         //   when using things like jQuery mobile or MagnificPopup (ref: #249 & #120).
                         //   Also, for Firefox, don’t prevent action on the `option` element.
@@ -856,7 +856,7 @@ function PickerConstructor( ELEMENT, NAME, COMPONENT, OPTIONS ) {
 
     function handleFocusToOpenEvent(event) {
 
-        // Stop the events from propagating to the doc.
+        // Stop the event from propagating to the doc.
         event.stopPropagation()
 
         // Add the “target” class.
@@ -989,8 +989,8 @@ function getScrollbarWidth() {
 
 
 /**
- * Get the target element from the events.
- * If ELEMENT is supplied and present in the events path (ELEMENT is ancestor of the target),
+ * Get the target element from the event.
+ * If ELEMENT is supplied and present in the event path (ELEMENT is ancestor of the target),
  * returns ELEMENT instead
  */
 function getRealEventTarget( event, ELEMENT ) {

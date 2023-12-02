@@ -115,7 +115,7 @@ function DatePicker( picker, settings ) {
     }
 
 
-    // Bind some picker events.
+    // Bind some picker event.
     picker.
         on( 'render', function() {
             picker.$root.find( '.' + settings.klass.selectMonth ).on( 'change', function() {
@@ -945,7 +945,7 @@ DatePicker.prototype.activate = function( type, datesToEnable ) {
                 }
             }
 
-            // In the events that we’re dealing with an exact range of dates,
+            // In the event that we’re dealing with an exact range of dates,
             // make sure there are no “inverted” dates because of it.
             if ( isExactRange ) for ( index = 0; index < disabledItemsCount; index += 1 ) {
                 if ( calendar.isDateOverlap( disabledItems[index], unitToEnable ) ) {

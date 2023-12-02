@@ -5,6 +5,9 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\EventController;
+
+
 
 
 /*
@@ -25,10 +28,11 @@ use App\Http\Controllers\BlogController;
 Route::get('/',[HomeController::class,'index'])->name('home');
 Route::get('/about',[HomeController::class,'about'])->name('about');
 Route::get('/contact',[HomeController::class,'contact'])->name('contact');
-Route::get('/events',[HomeController::class,'events'])->name('events');
+Route::get('/event',[HomeController::class,'event'])->name('event');
+Route::get('/event/single/{id}',[HomeController::class,'eventSingle'])->name('event.single');
 Route::get('/gallery',[HomeController::class,'gallery'])->name('gallery');
 Route::get('/blog',[HomeController::class,'blog'])->name('blog');
-Route::get('/blog/single',[HomeController::class,'blogSingle'])->name('blog.single');
+Route::get('/blog/single/{id}',[HomeController::class,'blogSingle'])->name('blog.single');
 Route::get('/donate',[HomeController::class,'donate'])->name('donate');
 Route::get('/causes',[HomeController::class,'causes'])->name('causes');
 
@@ -43,5 +47,6 @@ Route::middleware([
     Route::get('/dashboard',[DashboardController::class,'dashboard'])->name('dashboard');
     Route::resources(['categories'=> CategoryController::class]);
     Route::resources(['blogs'=> BlogController::class]);
+    Route::resources(['events'=> EventController::class]);
 
 });

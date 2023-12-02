@@ -23,7 +23,16 @@ class Blog extends Model
         self::$blog->author_name= $request->author_name;
         self::$blog->description= $request->description;
         self::$blog->date= $request->date;
-        self::$blog->image= self::saveImage($request);
+        if ($request->file('image')){
+            if (self::$blog->image){
+                if (file_exists(self::$blog->image)){
+                    unlink(self::$blog->image);
+                }
+            }
+            self::$blog->image= self::saveImage($request);
+        }
+
+
 
         self::$blog->save();
     }
@@ -48,6 +57,10 @@ else
 
 self::$status->save();
 
+    }
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
     }
 
 }

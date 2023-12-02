@@ -18,11 +18,11 @@
 
 
                         <div class="mb-3">
-                            <label for="catagory_name" class="form-label">Catagory Name</label>
-                            <select type="text" class="form-control" id="catagory_name" name="catagory_id">
+                            <label for="category_name" class="form-label">Category Name</label>
+                            <select type="text" class="form-control" id="category_name" name="category_id">
 
-                                @foreach($catagories as $catagory)
-                                    <option value="{{$catagory->id}}" {{$catagory->catagory_id == $blog->catagory_id ?'selected':''}}>{{$catagory->catagory_name}}</option>
+                                @foreach($categories as $category)
+                                    <option value="{{$category->id}}" {{$category->category_id == $blog->category_id ?'selected':''}}>{{$category->category_name}}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -40,11 +40,12 @@
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Blog Image</label>
+                            <img class="form-control" src="{{asset($blog->image)}}" alt="" style="height: 100px; width: 100px">
                             <input type="file" value="{{$blog->image}}" class="form-control"  name="image">
                         </div>
 
                         <div class="mb-3">
-                            <button type="submit" class="btn btn-success w-100 " >Submit Catagory</button>
+                            <button type="submit" class="btn btn-success w-100 " >Submit Category</button>
                         </div>
                     </form>
                 </div>

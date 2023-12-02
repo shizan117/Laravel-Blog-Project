@@ -484,7 +484,7 @@
                $input.val('');
             }
 
-            // If the field is empty, let the events triggered fire as usual
+            // If the field is empty, let the event triggered fire as usual
             if (self.options.cancelConfirmKeysOnEmpty === false) {
                 event.preventDefault();
             }
@@ -518,12 +518,12 @@
     },
 
     /**
-     * Removes all tagsinput behaviour and unregsiter all events handlers
+     * Removes all tagsinput behaviour and unregsiter all event handlers
      */
     destroy: function() {
       var self = this;
 
-      // Unbind events
+      // Unbind event
       self.$container.off('keypress', 'input');
       self.$container.off('click', '[role=remove]');
 
@@ -654,7 +654,7 @@
 
   /**
     * Returns boolean indicates whether user has pressed an expected key combination.
-    * @param object keyPressEvent: JavaScript events object, refer
+    * @param object keyPressEvent: JavaScript event object, refer
     *     http://www.w3.org/TR/2003/WD-DOM-Level-3-Events-20030331/ecma-script-binding.html
     * @param object lookupList: expected key combinations, as in:
     *     [13, {which: 188, shiftKey: true}]

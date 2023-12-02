@@ -61,9 +61,24 @@
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseFour"
            aria-expanded="true" aria-controls="collapseTwo">
             <i class="fas fa-fw fa-cog"></i>
-            <span>User</span>
+            <span>Event</span>
         </a>
         <div id="collapseFour" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header">Custom Event:</h6>
+                <a class="collapse-item" href="{{route('events.create')}}" >Create Event</a>
+                <a class="collapse-item" href="{{route('events.index')}}">Manage Event</a>
+            </div>
+        </div>
+    </li>
+
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUser"
+           aria-expanded="true" aria-controls="collapseUser">
+            <i class="fas fa-fw fa-cog"></i>
+            <span>User</span>
+        </a>
+        <div id="collapseUser" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Custom Blog:</h6>
                 <a class="collapse-item" href="#">Add User</a>

@@ -8,6 +8,10 @@
 
 @section('content')
 
+
+
+
+
     <div class="hero-wrap" style="background-image: url('{{asset('front-end-assets')}}/assets-2/images/bg_2.jpg');" data-stellar-background-ratio="0.5">
         <div class="overlay"></div>
         <div class="container">
@@ -20,30 +24,30 @@
         </div>
     </div>
 
-
     <section class="ftco-section">
         <div class="container">
-            <div class="row d-flex">
+            <div class="row">
                 @foreach($blogs as $blog)
-                    <div class="col-md-4 d-flex ftco-animate">
-                        <div class="blog-entry align-self-stretch" >
-                            <a href="blog-single.html" class="block-20" style="background-image: url('{{$blog->image}}');">
+                    <div class="col-md-4 d-flex ftco-animate" style="width: 100%">
+                        <div class="blog-entry ">
+                            <a href="{{route('blog.single',[$blog->id])}}" class="block-20" style="background-image: url('{{$blog->image}}');">
                             </a>
-                            <div class="text p-4 d-block">
-                                <div class="meta mb-3">
+                            <div class="text p-4" style="width: 450px">
+                                <div class="meta mb-4">
                                     <div><a href="#">{{date('M jS \'y',strtotime($blog->created_at))}}</a></div>
-                                    <div><a href="#">{{$blog->author_name}}</a></div>
+                                    <div>{{$blog->author_name}}</div>
                                     <div><a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a></div>
                                 </div>
-                                <h3 class="heading mt-3"><a href="#">{{$blog->title}}</a></h3>
-                                <p>{{$blog->description}}</p>
+                                <h3 class="heading mb-4">{{$blog->title}}</h3>
+                                <p>{{substr($blog->description,0,20).'[...]'}}</p>
+
+                                <p><a href="{{route('blog.single',[$blog->id])}}">Read More</a></p>
                             </div>
                         </div>
                     </div>
                 @endforeach
+
             </div>
         </div>
     </section>
-
-
 @endsection

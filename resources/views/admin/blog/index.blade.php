@@ -21,10 +21,12 @@
                         <th>Blog Category Name</th>
                         <th>Author Name</th>
                         <th>Description </th>
-                        <th>Date </th>
+                        <th>Selected Date </th>
+                        <th>Created Date </th>
+                        <th>Updated Date </th>
                         <th>Image </th>
                         <th>Status</th>
-                        <th>Action</th>
+                        <th style="width: 5%">Action</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -32,10 +34,12 @@
                         <tr>
                             <td>{{$loop->iteration}}</td>
                             <td>{{$blog->title}}</td>
-                            <td>{{$blog->category_id}}</td>
+                            <td>{{$blog->category_name}}</td>
                             <td>{{$blog->author_name}}</td>
-                            <td>{{$blog->description}}</td>
-                            <td>{{$blog->date}}</td>
+                            <td>{{substr($blog->description,0,30).'[...]' }}</td>
+                            <td>{{date('j- M- Y',strtotime($blog->date))}}</td>
+                            <td>{{date('j- M- Y',strtotime($blog->created_at))}}</td>
+                            <td>{{date('j- M- Y',strtotime($blog->updated_at))}}</td>
                             <td><img src="{{asset($blog->image)}}"  width="50px" height="50px" alt=""></td>
                             <td>{{$blog->status}}</td>
                             <td>

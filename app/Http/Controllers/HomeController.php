@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Blog;
+use App\Models\Category;
+use App\Models\Event;
 use Illuminate\Http\Request;
 use function Livewire\get;
 
@@ -18,8 +20,10 @@ class HomeController extends Controller
     public function contact(){
         return view('front-end.contact.contact');
     }
-    public function events(){
-        return view('front-end.events.events');
+    public function event(){
+        return view('front-end.event.event',[
+            'events'=>Event::where('status',1)->orderBy('id','desc')->get()
+        ]);
     }
   public function gallery(){
         return view('front-end.gallery.gallery');
@@ -39,7 +43,17 @@ class HomeController extends Controller
     public function upComing(){
         return view('front-end.upComing.upComing');
     }
-    public function blogSingle(){
-        return view('front-end.blog.blog-single');
+    public function blogSingle($id){
+//        self::$blog =; Blog::where('id',$id)->first();
+       return view('front-end.blog.blog-single',[
+         'blogs' => Blog::where('id',$id)->first(),
+           'category'=>Category::all()
+       ]);
+    }
+
+    public static function eventSingle($id){
+        return view('front-end.event.event-single',[
+            'events'=>Event::where('id',$id)->first()
+        ]);
     }
 }

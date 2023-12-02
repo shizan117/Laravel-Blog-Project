@@ -104,7 +104,7 @@ function TimePicker( picker, settings ) {
     }
 
 
-    // Bind some picker events.
+    // Bind some picker event.
     picker.
         on( 'render', function() {
             var $pickerHolder = picker.$root.children(),
@@ -845,7 +845,7 @@ TimePicker.prototype.activate = function( type, timesToEnable ) {
                 }
             }
 
-            // In the events that we’re dealing with an overlap of range times,
+            // In the event that we’re dealing with an overlap of range times,
             // make sure there are no “inverted” times because of it.
             if ( isRangeMatched ) for ( index = 0; index < disabledItemsCount; index += 1 ) {
                 if ( clock.isTimeOverlap( disabledItems[index], unitToEnable ) ) {

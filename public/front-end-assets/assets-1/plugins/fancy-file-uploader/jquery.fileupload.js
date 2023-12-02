@@ -80,8 +80,8 @@
     };
   }
 
-  // The fileupload widget listens for change events on file input fields defined
-  // via fileInput setting and paste or drop events of the given dropZone.
+  // The fileupload widget listens for change event on file input fields defined
+  // via fileInput setting and paste or drop event of the given dropZone.
   // In addition to the default jQuery Widget methods, the fileupload widget
   // exposes the "add" and "send" methods, to add or directly send files using
   // the fileupload API.
@@ -96,14 +96,14 @@
       // The paste target element(s), by the default undefined.
       // Set to a DOM node or jQuery object to enable file pasting:
       pasteZone: undefined,
-      // The file input field(s), that are listened to for change events.
+      // The file input field(s), that are listened to for change event.
       // If undefined, it is set to the file input fields inside
       // of the widget element on plugin initialization.
       // Set to null to disable the change listener.
       fileInput: undefined,
       // By default, the file input field is replaced with a clone after
-      // each input field change events. This is required for iframe transport
-      // queues and allows change events to be fired for the same file
+      // each input field change event. This is required for iframe transport
+      // queues and allows change event to be fired for the same file
       // selection, but can be disabled by setting the following option to false:
       replaceFileInput: true,
       // The parameter name for the file form data (the request argument name).
@@ -162,7 +162,7 @@
       // global progress calculation. Set the following option to false to
       // prevent recalculating the global progress data:
       recalculateProgress: true,
-      // Interval in milliseconds to calculate and trigger progress events:
+      // Interval in milliseconds to calculate and trigger progress event:
       progressInterval: 100,
       // Interval in milliseconds to calculate progress bitrate:
       bitrateInterval: 500,
@@ -239,7 +239,7 @@
 
       // Other callbacks:
 
-      // Callback for the submit events of each file upload:
+      // Callback for the submit event of each file upload:
       // submit: function (e, data) {}, // .on('fileuploadsubmit', func);
 
       // Callback for the start of each file upload request:
@@ -254,28 +254,28 @@
       // Callback for completed (success, abort or error) requests:
       // always: function (e, data) {}, // .on('fileuploadalways', func);
 
-      // Callback for upload progress events:
+      // Callback for upload progress event:
       // progress: function (e, data) {}, // .on('fileuploadprogress', func);
 
-      // Callback for global upload progress events:
+      // Callback for global upload progress event:
       // progressall: function (e, data) {}, // .on('fileuploadprogressall', func);
 
-      // Callback for uploads start, equivalent to the global ajaxStart events:
+      // Callback for uploads start, equivalent to the global ajaxStart event:
       // start: function (e) {}, // .on('fileuploadstart', func);
 
-      // Callback for uploads stop, equivalent to the global ajaxStop events:
+      // Callback for uploads stop, equivalent to the global ajaxStop event:
       // stop: function (e) {}, // .on('fileuploadstop', func);
 
-      // Callback for change events of the fileInput(s):
+      // Callback for change event of the fileInput(s):
       // change: function (e, data) {}, // .on('fileuploadchange', func);
 
-      // Callback for paste events to the pasteZone(s):
+      // Callback for paste event to the pasteZone(s):
       // paste: function (e, data) {}, // .on('fileuploadpaste', func);
 
-      // Callback for drop events of the dropZone(s):
+      // Callback for drop event of the dropZone(s):
       // drop: function (e, data) {}, // .on('fileuploaddrop', func);
 
-      // Callback for dragover events of the dropZone(s):
+      // Callback for dragover event of the dropZone(s):
       // dragover: function (e) {}, // .on('fileuploaddragover', func);
 
       // Callback before the start of each chunk upload request (before form data initialization):
@@ -301,7 +301,7 @@
       timeout: 0
     },
 
-    // A list of options that require reinitializing events listeners and/or
+    // A list of options that require reinitializing event listeners and/or
     // special initialization code:
     _specialOptions: [
       'fileInput',
@@ -424,7 +424,7 @@
           loaded,
           data.bitrateInterval
         );
-        // Trigger a custom progress events with a total data property set
+        // Trigger a custom progress event with a total data property set
         // to the file size(s) of the current upload and a loaded data
         // property calculated accordingly:
         this._trigger(
@@ -432,7 +432,7 @@
           $.Event('progress', { delegatedEvent: e }),
           data
         );
-        // Trigger a global progress events for all current file uploads,
+        // Trigger a global progress event for all current file uploads,
         // including ajax calls queued for sequential file uploads:
         this._trigger(
           'progressall',
@@ -445,12 +445,12 @@
     _initProgressListener: function (options) {
       var that = this,
         xhr = options.xhr ? options.xhr() : $.ajaxSettings.xhr();
-      // Accesss to the native XHR object is required to add events listeners
-      // for the upload progress events:
+      // Accesss to the native XHR object is required to add event listeners
+      // for the upload progress event:
       if (xhr.upload) {
         $(xhr.upload).on('progress', function (e) {
           var oe = e.originalEvent;
-          // Make sure the progress events properties get copied over:
+          // Make sure the progress event properties get copied over:
           e.lengthComputable = oe.lengthComputable;
           e.loaded = oe.loaded;
           e.total = oe.total;
@@ -863,7 +863,7 @@
         )
           .done(function (result, textStatus, jqXHR) {
             ub = that._getUploadedBytes(jqXHR) || ub + o.chunkSize;
-            // Create a progress events if no final progress events
+            // Create a progress event if no final progress event
             // with loaded equaling total has been triggered
             // for this chunk:
             if (currentLoaded + o.chunkSize - o._progress.loaded) {
@@ -914,7 +914,7 @@
       if (this._active === 0) {
         // the start callback is triggered when an upload starts
         // and no other uploads are currently running,
-        // equivalent to the global ajaxStart events:
+        // equivalent to the global ajaxStart event:
         this._trigger('start');
         // Set timer for global bitrate progress calculation:
         this._bitrateTimer = new this._BitrateTimer();
@@ -940,7 +940,7 @@
       var total = options._progress.total,
         response = options._response;
       if (options._progress.loaded < total) {
-        // Create a progress events if no final progress events
+        // Create a progress event if no final progress event
         // with loaded equaling total has been triggered:
         this._onProgress(
           $.Event('progress', {
@@ -1037,7 +1037,7 @@
                 }
                 if (that._active === 0) {
                   // The stop callback is triggered when all uploads have
-                  // been completed, equivalent to the global ajaxStop events:
+                  // been completed, equivalent to the global ajaxStop event:
                   that._trigger('stop');
                 }
               });
@@ -1174,7 +1174,7 @@
       $.cleanData(input.off('remove'));
       // Replace the original file input element in the fileInput
       // elements set with the clone, which has been copied including
-      // events handlers:
+      // event handlers:
       this.options.fileInput = this.options.fileInput.map(function (i, el) {
         if (el === input[0]) {
           return inputClone[0];
@@ -1408,7 +1408,7 @@
         this._on(this.options.dropZone, {
           dragover: this._onDragOver,
           drop: this._onDrop,
-          // events.preventDefault() on dragenter is required for IE10+:
+          // event.preventDefault() on dragenter is required for IE10+:
           dragenter: this._onDragEnter,
           // dragleave is not required, but added for completeness:
           dragleave: this._onDragLeave
