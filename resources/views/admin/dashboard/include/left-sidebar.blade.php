@@ -27,6 +27,26 @@
     </div>
 
     <!-- Nav Item - Pages Collapse Menu -->
+
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseAbout"
+           aria-expanded="true" aria-controls="collapseAbout">
+            <i class="fas fa-fw fa-cog"></i>
+            <span>About</span>
+        </a>
+        <div id="collapseAbout" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header">Custom About Page:</h6>
+                <a class="collapse-item" href="{{route('abouts.create')}}">Add</a>
+                <a class="collapse-item" href="{{route('abouts.index')}}">Manage</a>
+                <a class="collapse-item" href="#">Donation Details</a>
+                <a class="collapse-item" href="#">Volunteer Details</a>
+            </div>
+        </div>
+    </li>
+
+
+
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
            aria-expanded="true" aria-controls="collapseTwo">

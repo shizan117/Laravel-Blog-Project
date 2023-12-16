@@ -6,6 +6,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\EventController;
+use App\Http\Controllers\AboutController;
 
 
 
@@ -48,5 +49,6 @@ Route::middleware([
     Route::resources(['categories'=> CategoryController::class]);
     Route::resources(['blogs'=> BlogController::class]);
     Route::resources(['events'=> EventController::class]);
+    Route::resources(['abouts'=> AboutController::class]);
 
 });

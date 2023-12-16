@@ -23,6 +23,7 @@ class Blog extends Model
         self::$blog->author_name= $request->author_name;
         self::$blog->description= $request->description;
         self::$blog->date= $request->date;
+
         if ($request->file('image')){
             if (self::$blog->image){
                 if (file_exists(self::$blog->image)){
@@ -31,12 +32,8 @@ class Blog extends Model
             }
             self::$blog->image= self::saveImage($request);
         }
-
-
-
         self::$blog->save();
     }
-
     public static function saveImage($request){
         self::$image=$request->file('image');
         self::$imageNewName = rand().'.'.self::$image->extension();

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\About;
 use App\Models\Blog;
 use App\Models\Category;
 use App\Models\Event;
@@ -15,7 +16,9 @@ class HomeController extends Controller
         return view('front-end.home.home');
     }
     public function about(){
-        return view('front-end.about.about');
+        return view('front-end.about.about',[
+            'abouts'=>About::first()
+        ]);
     }
     public function contact(){
         return view('front-end.contact.contact');
@@ -26,7 +29,10 @@ class HomeController extends Controller
         ]);
     }
   public function gallery(){
-        return view('front-end.gallery.gallery');
+        return view('front-end.gallery.gallery',[
+            'events'=>Event::where('status',1)->orderBy('id','desc')->get(),
+            'blogs' => Blog::where('status',1)->orderBy('id','desc')->get()
+        ]);
     }
     public function blog(){
         return view('front-end.blog.blog',[

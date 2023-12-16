@@ -6,7 +6,7 @@
 
 @section('content')
 
-    <div class="hero-wrap" style="background-image: url('{{asset('front-end-assets')}}/assets-2/images/bg_7.jpg');" data-stellar-background-ratio="0.5">
+    <div class="hero-wrap" style="background-image: url('{{asset($abouts->background_image)}}');" data-stellar-background-ratio="0.5">
         <div class="overlay"></div>
         <div class="container">
             <div class="row no-gutters slider-text align-items-center justify-content-center" data-scrollax-parent="true">
@@ -22,10 +22,10 @@
         <div class="container">
             <div class="row d-flex">
                 <div class="col-md-6 d-flex ftco-animate">
-                    <div class="img img-about align-self-stretch" style="background-image: url({{asset('front-end-assets')}}/assets-2/images/bg_3.jpg); width: 100%;"></div>
+                    <div class="img img-about align-self-stretch" style="background-image: url({{asset($abouts->about_image)}}); width: 100%;"></div>
                 </div>
                 <div class="col-md-6 pl-md-5 ftco-animate">
-                    <h2 class="mb-4">Welcome to Welfare Stablished Since 1898</h2>
+                    <h2 class="mb-4">{{$abouts->title}}</h2>
                     <p>The Big Oxmox advised her not to do so, because there were thousands of bad Commas, wild Question Marks and devious Semikoli, but the Little Blind Text didn’t listen. She packed her seven versalia, put her initial into the belt and made herself on the way.</p>
                     <p>On her way she met a copy. The copy warned the Little Blind Text, that where it came from it would have been rewritten a thousand times and everything that was left from its origin would be the word "and" and the Little Blind Text should turn around and return to its own, safe country. But nothing the copy said could convince her and so it didn’t take long until a few insidious Copy Writers ambushed her, made her drunk with Longe and Parole and dragged her into their agency, where they abused her for their.</p>
                 </div>
@@ -59,7 +59,7 @@
                         <div class="text">
                             <h3 class="mb-4">Be a Volunteer</h3>
                             <p>Even the all-powerful Pointing has no control about the blind texts.</p>
-                            <p><a href="#" class="btn btn-white px-3 py-2 mt-2">Be A Volunteer</a></p>
+                            <p><a href="{{$abouts->volunteer_google_form}}" target="_blank" class="btn btn-white px-3 py-2 mt-2">Be A Volunteer</a></p>
                         </div>
                     </div>
                 </div>
