@@ -13,7 +13,11 @@ class HomeController extends Controller
 {
 
     public function index(){
-        return view('front-end.home.home');
+        return view('front-end.home.home',[
+            'blogs' => Blog::where('status',1)->orderBy('id','desc')->take(8)->get(),
+            'events'=>Event::where('status',1)->orderBy('id','desc')->take(3)->get(),
+            'abouts'=>About::first()
+        ]);
     }
     public function about(){
         return view('front-end.about.about',[
@@ -30,7 +34,7 @@ class HomeController extends Controller
     }
   public function gallery(){
         return view('front-end.gallery.gallery',[
-            'events'=>Event::where('status',1)->orderBy('id','desc')->get(),
+//            'events'=>Event::where('status',1)->orderBy('id','desc')->get(),
             'blogs' => Blog::where('status',1)->orderBy('id','desc')->get()
         ]);
     }
@@ -62,4 +66,9 @@ class HomeController extends Controller
             'events'=>Event::where('id',$id)->first()
         ]);
     }
+
+    public static function volunteer(){
+        return view('front-end.volunteer.volunteer');
+    }
+
 }

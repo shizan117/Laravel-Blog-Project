@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\About;
+use App\Models\Volunteer;
 use Illuminate\Http\Request;
 
 class AboutController extends Controller
@@ -17,6 +18,7 @@ class AboutController extends Controller
             'abouts'=>About::all()
         ]);
     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -82,4 +84,6 @@ class AboutController extends Controller
         self::$destroy->delete();
         return back();
     }
+
+
 }

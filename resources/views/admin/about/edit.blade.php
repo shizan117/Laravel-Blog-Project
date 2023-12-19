@@ -34,7 +34,7 @@
                             <img src="{{ asset($about->about_image) }}" alt="About Image" class="img-fluid mt-2">
                         </div>
 
-                        <!-- Add a div and input for Volunteer Google Form link -->
+                        <!-- Add a div and input for volunteer Google Form link -->
                         <div class="mb-3">
                             <label for="volunteer_google_form" class="form-label">Volunteer Google Form Link</label>
                             <input type="text" class="form-control" id="volunteer_google_form" name="volunteer_google_form" value="{{$about->volunteer_google_form}}" placeholder="Enter Google Form Link for Volunteers">

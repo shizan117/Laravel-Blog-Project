@@ -31,7 +31,7 @@
                             <input type="file" class="form-control" id="about_image" name="about_image" required>
                         </div>
 
-                        <!-- Add a div and input for Volunteer Google Form link -->
+                        <!-- Add a div and input for volunteer Google Form link -->
                         <div class="mb-3">
                             <label for="volunteer_google_form" class="form-label">Volunteer Google Form Link</label>
                             <input type="text" class="form-control" id="volunteer_google_form" name="volunteer_google_form" placeholder="Enter Google Form Link for Volunteers">

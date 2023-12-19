@@ -40,7 +40,7 @@
                 <a class="collapse-item" href="{{route('abouts.create')}}">Add</a>
                 <a class="collapse-item" href="{{route('abouts.index')}}">Manage</a>
                 <a class="collapse-item" href="#">Donation Details</a>
-                <a class="collapse-item" href="#">Volunteer Details</a>
+                <a class="collapse-item" href="{{route('volunteer.index')}}">Volunteer Details</a>
             </div>
         </div>
     </li>

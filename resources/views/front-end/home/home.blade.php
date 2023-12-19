@@ -27,7 +27,7 @@
                     <div class="block-18 color-1 align-items-stretch">
                         <div class="text">
                             <span>Served Over</span>
-                            <strong class="number" data-number="1432805">0</strong>
+                            <strong class="number" data-number="80250">0</strong>
                             <span>Children in 190 countries in the world</span>
                         </div>
                     </div>
@@ -37,7 +37,7 @@
                         <div class="text">
                             <h3 class="mb-4">Donate Money</h3>
                             <p>Even the all-powerful Pointing has no control about the blind texts.</p>
-                            <p><a href="#" class="btn btn-white px-3 py-2 mt-2">Donate Now</a></p>
+                            <p><a href="{{route('upComing')}}" class="btn btn-white px-3 py-2 mt-2">Donate Now</a></p>
                         </div>
                     </div>
                 </div>
@@ -46,7 +46,8 @@
                         <div class="text">
                             <h3 class="mb-4">Be a Volunteer</h3>
                             <p>Even the all-powerful Pointing has no control about the blind texts.</p>
-                            <p><a href="#" class="btn btn-white px-3 py-2 mt-2">Be A Volunteer</a></p>
+{{--                            <p><a href="{{$abouts->volunteer_google_form}}" target="_blank" class="btn btn-white px-3 py-2 mt-2">Be A volunteer</a></p>--}}
+                            <p><a href="{{route('volunteer')}}" target="_blank" class="btn btn-white px-3 py-2 mt-2">Be A Volunteer</a></p>
                         </div>
                     </div>
                 </div>
@@ -88,107 +89,44 @@
         </div>
     </section>
 
-
     <section class="ftco-section bg-light">
         <div class="container-fluid">
             <div class="row justify-content-center mb-5 pb-3">
-                <div class="col-md-5 heading-section ftco-animate text-center">
-                    <h2 class="mb-4">Our Causes</h2>
-                    <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+                <div class="col-md-8 text-center">
+                    <h2 class="mb-4 section-title">Recent From Our Blog</h2>
+                    <p class="section-subtitle">Explore our latest articles and stay updated with our stories.</p>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-12 ftco-animate">
                     <div class="carousel-cause owl-carousel">
-                        <div class="item">
-                            <div class="cause-entry">
-                                <a href="#" class="img" style="background-image: url({{asset('front-end-assets')}}/assets-2/images/cause-1.jpg);"></a>
-                                <div class="text p-3 p-md-4">
-                                    <h3><a href="#">Clean water for the urban area</a></h3>
-                                    <p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life</p>
-                                    <span class="donation-time mb-3 d-block">Last donation 1w ago</span>
-                                    <div class="progress custom-progress-success">
-                                        <div class="progress-bar bg-primary" role="progressbar" style="width: 28%" aria-valuenow="28" aria-valuemin="0" aria-valuemax="100"></div>
+                        @for($i = 0; $i < min(count($blogs), 8); $i++)
+                            <div class="item">
+                                <div class="cause-entry">
+                                    <a href="{{ route('blog.single', [$blogs[$i]->id]) }}" class="img" style="background-image: url('{{ $blogs[$i]->image }}');"></a>
+                                    <div class="text p-3 p-md-4">
+                                        <h3 class="heading text-center font-weight-bold"><a href="{{ route('blog.single', [$blogs[$i]->id]) }}" class="blog-title">{{ $blogs[$i]->title }}</a></h3>
+                                        <p class="blog-excerpt">{{ substr($blogs[$i]->description, 0, 350).'[...]' }} <a href="{{ route('blog.single', [$blogs[$i]->id]) }}" class="read-more-link">Read More</a></p>
+                                        <div class="meta mb-4">
+                                            <div class="text-center">
+                                                <span class="meta-date">{{ date('M jS, Y', strtotime($blogs[$i]->created_at)) }}</span>
+                                                <span class="meta-author">By {{ $blogs[$i]->author_name }}</span>
+                                                <a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <span class="fund-raised d-block">$12,000 raised of $30,000</span>
                                 </div>
                             </div>
-                        </div>
-                        <div class="item">
-                            <div class="cause-entry">
-                                <a href="#" class="img" style="background-image: url({{asset('front-end-assets')}}/assets-2/images/cause-2.jpg);"></a>
-                                <div class="text p-3 p-md-4">
-                                    <h3><a href="#">Clean water for the urban area</a></h3>
-                                    <p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life</p>
-                                    <span class="donation-time mb-3 d-block">Last donation 1w ago</span>
-                                    <div class="progress custom-progress-success">
-                                        <div class="progress-bar bg-primary" role="progressbar" style="width: 28%" aria-valuenow="28" aria-valuemin="0" aria-valuemax="100"></div>
-                                    </div>
-                                    <span class="fund-raised d-block">$12,000 raised of $30,000</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="cause-entry">
-                                <a href="#" class="img" style="background-image: url({{asset('front-end-assets')}}/assets-2/images/cause-3.jpg);"></a>
-                                <div class="text p-3 p-md-4">
-                                    <h3><a href="#">Clean water for the urban area</a></h3>
-                                    <p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life</p>
-                                    <span class="donation-time mb-3 d-block">Last donation 1w ago</span>
-                                    <div class="progress custom-progress-success">
-                                        <div class="progress-bar bg-primary" role="progressbar" style="width: 28%" aria-valuenow="28" aria-valuemin="0" aria-valuemax="100"></div>
-                                    </div>
-                                    <span class="fund-raised d-block">$12,000 raised of $30,000</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="cause-entry">
-                                <a href="#" class="img" style="background-image: url({{asset('front-end-assets')}}/assets-2/images/cause-4.jpg);"></a>
-                                <div class="text p-3 p-md-4">
-                                    <h3><a href="#">Clean water for the urban area</a></h3>
-                                    <p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life</p>
-                                    <span class="donation-time mb-3 d-block">Last donation 1w ago</span>
-                                    <div class="progress custom-progress-success">
-                                        <div class="progress-bar bg-primary" role="progressbar" style="width: 28%" aria-valuenow="28" aria-valuemin="0" aria-valuemax="100"></div>
-                                    </div>
-                                    <span class="fund-raised d-block">$12,000 raised of $30,000</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="cause-entry">
-                                <a href="#" class="img" style="background-image: url({{asset('front-end-assets')}}/assets-2/images/cause-5.jpg);"></a>
-                                <div class="text p-3 p-md-4">
-                                    <h3><a href="#">Clean water for the urban area</a></h3>
-                                    <p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life</p>
-                                    <span class="donation-time mb-3 d-block">Last donation 1w ago</span>
-                                    <div class="progress custom-progress-success">
-                                        <div class="progress-bar bg-primary" role="progressbar" style="width: 28%" aria-valuenow="28" aria-valuemin="0" aria-valuemax="100"></div>
-                                    </div>
-                                    <span class="fund-raised d-block">$12,000 raised of $30,000</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="cause-entry">
-                                <a href="#" class="img" style="background-image: url({{asset('front-end-assets')}}/assets-2/images/cause-6.jpg);"></a>
-                                <div class="text p-3 p-md-4">
-                                    <h3><a href="#">Clean water for the urban area</a></h3>
-                                    <p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life</p>
-                                    <span class="donation-time mb-3 d-block">Last donation 1w ago</span>
-                                    <div class="progress custom-progress-success">
-                                        <div class="progress-bar bg-primary" role="progressbar" style="width: 28%" aria-valuenow="28" aria-valuemin="0" aria-valuemax="100"></div>
-                                    </div>
-                                    <span class="fund-raised d-block">$12,000 raised of $30,000</span>
-                                </div>
-                            </div>
-                        </div>
+                        @endfor
                     </div>
                 </div>
             </div>
         </div>
     </section>
+
+
+
+
 
     <section class="ftco-section">
         <div class="container">
@@ -245,173 +183,59 @@
         </div>
     </section>
 
+
+
+
+
+
     <section class="ftco-gallery">
-        <div class="d-md-flex">
-            <a href="{{asset('front-end-assets')}}/assets-2/images/cause-2.jpg" class="gallery image-popup d-flex justify-content-center align-items-center img ftco-animate" style="background-image: url({{asset('front-end-assets')}}/assets-2/images/cause-2.jpg);">
-                <div class="icon d-flex justify-content-center align-items-center">
-                    <span class="icon-search"></span>
-                </div>
-            </a>
-            <a href="{{asset('front-end-assets')}}/assets-2/images/cause-3.jpg" class="gallery image-popup d-flex justify-content-center align-items-center img ftco-animate" style="background-image: url({{asset('front-end-assets')}}/assets-2/images/cause-3.jpg);">
-                <div class="icon d-flex justify-content-center align-items-center">
-                    <span class="icon-search"></span>
-                </div>
-            </a>
-            <a href="{{asset('front-end-assets')}}/assets-2/images/cause-4.jpg" class="gallery image-popup d-flex justify-content-center align-items-center img ftco-animate" style="background-image: url({{asset('front-end-assets')}}/assets-2/images/cause-4.jpg);">
-                <div class="icon d-flex justify-content-center align-items-center">
-                    <span class="icon-search"></span>
-                </div>
-            </a>
-            <a href="{{asset('front-end-assets')}}/assets-2/images/cause-5.jpg" class="gallery image-popup d-flex justify-content-center align-items-center img ftco-animate" style="background-image: url({{asset('front-end-assets')}}/assets-2/images/cause-5.jpg);">
-                <div class="icon d-flex justify-content-center align-items-center">
-                    <span class="icon-search"></span>
-                </div>
-            </a>
-        </div>
-        <div class="d-md-flex">
-            <a href="{{asset('front-end-assets')}}/assets-2/images/cause-6.jpg" class="gallery image-popup d-flex justify-content-center align-items-center img ftco-animate" style="background-image: url({{asset('front-end-assets')}}/assets-2/images/cause-6.jpg);">
-                <div class="icon d-flex justify-content-center align-items-center">
-                    <span class="icon-search"></span>
-                </div>
-            </a>
-            <a href="{{asset('front-end-assets')}}/assets-2/images/image_3.jpg" class="gallery image-popup d-flex justify-content-center align-items-center img ftco-animate" style="background-image: url({{asset('front-end-assets')}}/assets-2/images/image_3.jpg);">
-                <div class="icon d-flex justify-content-center align-items-center">
-                    <span class="icon-search"></span>
-                </div>
-            </a>
-            <a href="{{asset('front-end-assets')}}/assets-2/images/image_1.jpg" class="gallery image-popup d-flex justify-content-center align-items-center img ftco-animate" style="background-image: url({{asset('front-end-assets')}}/assets-2/images/image_1.jpg);">
-                <div class="icon d-flex justify-content-center align-items-center">
-                    <span class="icon-search"></span>
-                </div>
-            </a>
-            <a href="{{asset('front-end-assets')}}/assets-2/images/image_2.jpg" class="gallery image-popup d-flex justify-content-center align-items-center img ftco-animate" style="background-image: url({{asset('front-end-assets')}}/assets-2/images/image_2.jpg);">
-                <div class="icon d-flex justify-content-center align-items-center">
-                    <span class="icon-search"></span>
-                </div>
-            </a>
+        <div class="row">
+            @for($i = 0; $i < min(count($blogs), 8); $i++)
+                <a href="{{ asset($blogs[$i]->image) }}" class="gallery image-popup d-flex justify-content-center align-items-center img ftco-animate" style="background-image: url({{ asset($blogs[$i]->image) }});">
+                    <div class="icon d-flex justify-content-center align-items-center">
+                        <span class="icon-search"></span>
+                    </div>
+                </a>
+            @endfor
         </div>
     </section>
 
-    <section class="ftco-section">
-        <div class="container">
-            <div class="row justify-content-center mb-5 pb-3">
-                <div class="col-md-7 heading-section ftco-animate text-center">
-                    <h2 class="mb-4">Recent from blog</h2>
-                    <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                </div>
-            </div>
-            <div class="row d-flex">
-                <div class="col-md-4 d-flex ftco-animate">
-                    <div class="blog-entry align-self-stretch">
-                        <a href="blog-single.html" class="block-20" style="background-image: url('{{asset('front-end-assets')}}/assets-2/images/image_1.jpg');">
-                        </a>
-                        <div class="text p-4 d-block">
-                            <div class="meta mb-3">
-                                <div><a href="#">Sept 10, 2018</a></div>
-                                <div><a href="#">Admin</a></div>
-                                <div><a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a></div>
-                            </div>
-                            <h3 class="heading mt-3"><a href="#">Hurricane Irma has devastated Florida</a></h3>
-                            <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 d-flex ftco-animate">
-                    <div class="blog-entry align-self-stretch">
-                        <a href="blog-single.html" class="block-20" style="background-image: url('{{asset('front-end-assets')}}/assets-2/images/image_2.jpg');">
-                        </a>
-                        <div class="text p-4 d-block">
-                            <div class="meta mb-3">
-                                <div><a href="#">Sept 10, 2018</a></div>
-                                <div><a href="#">Admin</a></div>
-                                <div><a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a></div>
-                            </div>
-                            <h3 class="heading mt-3"><a href="#">Hurricane Irma has devastated Florida</a></h3>
-                            <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 d-flex ftco-animate">
-                    <div class="blog-entry align-self-stretch">
-                        <a href="blog-single.html" class="block-20" style="background-image: url('{{asset('front-end-assets')}}/assets-2/images/image_3.jpg');">
-                        </a>
-                        <div class="text p-4 d-block">
-                            <div class="meta mb-3">
-                                <div><a href="#">Sept 10, 2018</a></div>
-                                <div><a href="#">Admin</a></div>
-                                <div><a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a></div>
-                            </div>
-                            <h3 class="heading mt-3"><a href="#">Hurricane Irma has devastated Florida</a></h3>
-                            <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+
 
     <section class="ftco-section bg-light">
         <div class="container">
             <div class="row justify-content-center mb-5 pb-3">
                 <div class="col-md-7 heading-section ftco-animate text-center">
-                    <h2 class="mb-4">Our Latest Events</h2>
+                    <h2 class="mb-4">Explore Our Latest Events</h2>
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-4 d-flex ftco-animate">
-                    <div class="blog-entry align-self-stretch">
-                        <a href="blog-single.html" class="block-20" style="background-image: url('{{asset('front-end-assets')}}/assets-2/images/event-1.jpg');">
-                        </a>
-                        <div class="text p-4 d-block">
-                            <div class="meta mb-3">
-                                <div><a href="#">Sep. 10, 2018</a></div>
-                                <div><a href="#">Admin</a></div>
-                                <div><a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a></div>
+                @for($i = 0; $i < min(count($events), 3); $i++)
+                    <div class="col-md-4 d-flex ftco-animate">
+                        <div class="blog-entry align-self-stretch">
+                            <a href="{{route('event.single',[$events[$i]->id])}}" class="block-20" style="background-image: url('{{$events[$i]->image}}');"> </a>
+                            <div class="text p-4 d-block">
+                                <div class="meta mb-3">
+                                    <div><a href="#" class="meta-date">{{\Carbon\Carbon::parse($events[$i]->datetime)->format('j M, Y')}}</a></div>
+                                    <div><a href="#" class="meta-author">By Admin</a></div>
+                                    <div><a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a></div>
+                                </div>
+                                <h3 class="heading mb-4"><a href="{{route('event.single',[$events[$i]->id])}}" class="event-title">{{$events[$i]->title}}</a></h3>
+                                <p class="time-loc">
+                                    <span class="mr-2"><i class="icon-clock-o"></i> {{ \Carbon\Carbon::parse($events[$i]->datetime)->format('h:ia') }}</span>
+                                    <span><i class="icon-map-o"></i>{{ $events[$i]->location }}</span>
+                                </p>
+                                <p class="event-description">{{ substr($events[$i]->description, 0, 150).'[...]' }}</p>
+                                <p><a href="{{route('event.single',[$events[$i]->id])}}" class="btn btn-primary">Join Event <i class="ion-ios-arrow-forward"></i></a></p>
                             </div>
-                            <h3 class="heading mb-4"><a href="#">World Wide Donation</a></h3>
-                            <p class="time-loc"><span class="mr-2"><i class="icon-clock-o"></i> 10:30AM-03:30PM</span> <span><i class="icon-map-o"></i> Venue Main Campus</span></p>
-                            <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
-                            <p><a href="event.html">Join Event <i class="ion-ios-arrow-forward"></i></a></p>
                         </div>
                     </div>
-                </div>
-                <div class="col-md-4 d-flex ftco-animate">
-                    <div class="blog-entry align-self-stretch">
-                        <a href="blog-single.html" class="block-20" style="background-image: url('{{asset('front-end-assets')}}/assets-2/images/event-2.jpg');">
-                        </a>
-                        <div class="text p-4 d-block">
-                            <div class="meta mb-3">
-                                <div><a href="#">Sep. 10, 2018</a></div>
-                                <div><a href="#">Admin</a></div>
-                                <div><a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a></div>
-                            </div>
-                            <h3 class="heading mb-4"><a href="#">World Wide Donation</a></h3>
-                            <p class="time-loc"><span class="mr-2"><i class="icon-clock-o"></i> 10:30AM-03:30PM</span> <span><i class="icon-map-o"></i> Venue Main Campus</span></p>
-                            <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
-                            <p><a href="event.html">Join Event <i class="ion-ios-arrow-forward"></i></a></p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 d-flex ftco-animate">
-                    <div class="blog-entry align-self-stretch">
-                        <a href="blog-single.html" class="block-20" style="background-image: url('{{asset('front-end-assets')}}/assets-2/images/event-3.jpg');">
-                        </a>
-                        <div class="text p-4 d-block">
-                            <div class="meta mb-3">
-                                <div><a href="#">Sep. 10, 2018</a></div>
-                                <div><a href="#">Admin</a></div>
-                                <div><a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a></div>
-                            </div>
-                            <h3 class="heading mb-4"><a href="#">World Wide Donation</a></h3>
-                            <p class="time-loc"><span class="mr-2"><i class="icon-clock-o"></i> 10:30AM-03:30PM</span> <span><i class="icon-map-o"></i> Venue Main Campus</span></p>
-                            <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
-                            <p><a href="event.html">Join Event <i class="ion-ios-arrow-forward"></i></a></p>
-                        </div>
-                    </div>
-                </div>
+                @endfor
             </div>
         </div>
     </section>
+
+
 
     <section class="ftco-section-3 img" style="background-image: url({{asset('front-end-assets')}}/assets-2/images/bg_3.jpg);">
         <div class="overlay"></div>
@@ -421,7 +245,7 @@
                     <div class="img img-2 align-self-stretch" style="background-image: url({{asset('front-end-assets')}}/assets-2/images/bg_4.jpg);"></div>
                 </div>
                 <div class="col-md-6 volunteer pl-md-5 ftco-animate">
-                    <h3 class="mb-3">Be a volunteer</h3>
+                    <h3 class="mb-3">Contact Us</h3>
                     <form action="#" class="volunter-form">
                         <div class="form-group">
                             <input type="text" class="form-control" placeholder="Your Name">

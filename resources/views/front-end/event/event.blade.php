@@ -41,7 +41,7 @@
                                 <span class="mr-2"><i class="icon-clock-o"></i> {{ \Carbon\Carbon::parse($event->datetime)->format('h:ia') }}</span>
                                 <span><i class="icon-map-o"></i>{{ $event->location }}</span>
                             </p>
-                            <p>{{$event->description}}</p>
+                            <p>{{ substr($event->description, 0, 100).'[...]'}}</p>
                             <p><a href="{{route('event.single',[$event->id])}}">Join Event <i class="ion-ios-arrow-forward"></i></a></p>
                         </div>
                     </div>

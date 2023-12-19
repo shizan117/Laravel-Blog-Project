@@ -7,6 +7,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\AboutController;
+use App\Http\Controllers\VolunteerController;
 
 
 
@@ -36,6 +37,8 @@ Route::get('/blog',[HomeController::class,'blog'])->name('blog');
 Route::get('/blog/single/{id}',[HomeController::class,'blogSingle'])->name('blog.single');
 Route::get('/donate',[HomeController::class,'donate'])->name('donate');
 Route::get('/causes',[HomeController::class,'causes'])->name('causes');
+Route::get('/volunteer',[HomeController::class,'volunteer'])->name('volunteer');
+Route::Post('/volunteer.store',[VolunteerController::class,'store'])->name('volunteer.store');
 
 
 Route::get('/upComing',[HomeController::class,'upComing'])->name('upComing');
@@ -50,5 +53,10 @@ Route::middleware([
     Route::resources(['blogs'=> BlogController::class]);
     Route::resources(['events'=> EventController::class]);
     Route::resources(['abouts'=> AboutController::class]);
+    Route::get('/volunteer/index',[VolunteerController::class,'index'])->name('volunteer.index');
+    Route::delete('/volunteers/destroy/{id}', [VolunteerController::class, 'volunteersDestroy'])->name('volunteersDestroy');
+    Route::get('/volunteer/status/{id}', [VolunteerController::class, 'show'])->name('volunteer.status');
+
+
 
 });

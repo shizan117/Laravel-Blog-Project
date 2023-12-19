@@ -20,16 +20,17 @@
         </div>
     </div>
 
-    <section class="ftco-section ftco-gallery">
-        <div class="container">
-            <div class="d-md-flex">
-                @foreach($events as $event)
-                    <a href="{{ asset($event->image) }}" class="gallery image-popup d-flex justify-content-center align-items-center img ftco-animate" style="background-image: url({{ asset($event->image) }});">
-                        <div class="icon d-flex justify-content-center align-items-center">
-                            <span class="icon-search"></span>
-                        </div>
-                    </a>
-                @endforeach
+
+    <section class="ftco-section">
+
+            <div class="row">
+{{--                @foreach($events as $event)--}}
+{{--                    <a href="{{ asset($event->image) }}" class="gallery image-popup d-flex justify-content-center align-items-center img ftco-animate" style="background-image: url({{ asset($event->image) }});">--}}
+{{--                        <div class="icon d-flex justify-content-center align-items-center">--}}
+{{--                            <span class="icon-search"></span>--}}
+{{--                        </div>--}}
+{{--                    </a>--}}
+{{--                @endforeach--}}
 
                 @foreach($blogs as $blog)
                     <a href="{{ asset($blog->image) }}" class="gallery image-popup d-flex justify-content-center align-items-center img ftco-animate" style="background-image: url({{ asset($blog->image) }});">
@@ -38,11 +39,11 @@
                         </div>
                     </a>
                 @endforeach
+
             </div>
-        </div>
+
     </section>
 
-    {{-- Your other sections go here --}}
-    {{-- ... --}}
+
 
 @endsection
